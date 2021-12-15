@@ -19,4 +19,9 @@ def integral_view(image: list[list[int]]) -> list[list[int]]:
 
 
 def rect_sum(image: list[list[int]], x1: int, y1: int, x2: int, y2: int) -> int:
-    ...
+    c = sum(image[y][x] for y in range(y2 + 1) for x in range(x2 + 1))
+    a = sum(image[y][x] for y in range(y1) for x in range(x1))
+    b = sum(image[y][x] for y in range(y1) for x in range(x2 + 1))
+    d = sum(image[y][x] for y in range(y2 + 1) for x in range(x1))
+    s = a + c - b - d
+    return s
