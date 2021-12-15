@@ -2,6 +2,10 @@ from random import randint
 
 
 def generate_matrix() -> list[list[int]]:
+    """
+    Генерация матрицы с элементами от 0 до 255,
+    количеством строчек и столбцов от 2 до 15
+    """
     height, width = randint(2, 15), randint(2, 15)
     matrix = [[randint(0, 255) for _ in range(width)] for _ in range(height)]
     return matrix
