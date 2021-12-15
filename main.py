@@ -1,3 +1,6 @@
+from random import randint
+
+
 def generate_matrix() -> list[list[int]]:
     ...
 
