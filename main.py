@@ -2,7 +2,9 @@ from random import randint
 
 
 def generate_matrix() -> list[list[int]]:
-    ...
+    height, width = randint(2, 15), randint(2, 15)
+    matrix = [[randint(0, 255) for _ in range(width)] for _ in range(height)]
+    return matrix
 
 
 def integral_view(image: list[list[int]]) -> list[list[int]]:
