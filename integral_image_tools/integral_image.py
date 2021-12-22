@@ -12,19 +12,18 @@ def integral_view(image: list[list[int]]) -> list[list[int]]:
         raise ValueError("\"image\"'s must be a list")
     else:
         for index, item in enumerate(image):
+            if not isinstance(item, list):
+                raise ValueError("items of \"image\" must be lists")
+            for num in item:
+                if not isinstance(num, int) or num < 0 or num > 255:
+                    raise ValueError("items of items of \"image\" must be integers between 0 and 255")
             if index == len(image) - 1:
                 pass
             else:
                 if len(image[index]) != len(image[index + 1]):
                     raise ValueError("items of \"image\" must be of the same length")
-            if not isinstance(item, list):
-                raise ValueError("items of \"image\" must be lists")
-            for num in item:
-                if not isinstance(num, int):
-                    raise ValueError("items of items of \"image\" must be integers")
-                if num < 0 or num > 255:
-                    raise ValueError("items of items of \"image\" must be integers between 0 and 255") 
-
+            
+    # Calculating matrix
     height, width = len(image), len(image[0])
     integral_image = [[0] * width for _ in range(height)]
     for y in range(height):
@@ -46,18 +45,16 @@ def rect_sum(image: list[list[int]], x1: int, y1: int, x2: int, y2: int) -> int:
         raise ValueError("\"image\"'s must be a list")
     else:
         for index, item in enumerate(image):
+            if not isinstance(item, list):
+                raise ValueError("items of \"image\" must be lists")
+            for num in item:
+                if not isinstance(num, int) or num < 0 or num > 255:
+                    raise ValueError("items of items of \"image\" must be integers between 0 and 255")
             if index == len(image) - 1:
                 pass
             else:
                 if len(image[index]) != len(image[index + 1]):
                     raise ValueError("items of \"image\" must be of the same length")
-            if not isinstance(item, list):
-                raise ValueError("items of \"image\" must be lists")
-            for num in item:
-                if not isinstance(num, int):
-                    raise ValueError("items of items of \"image\" must be integers")
-                if num < 0 or num > 255:
-                    raise ValueError("items of items of \"image\" must be integers between 0 and 255") 
 
     # Checking coordinates
     top_left_border = (x1, y1)
@@ -74,7 +71,7 @@ def rect_sum(image: list[list[int]], x1: int, y1: int, x2: int, y2: int) -> int:
         raise ValueError("y1 or y2 must not be greater than the number of the matrix rows")
     if x1 > x2 or y1 > y2:
         raise ValueError("top-left border coordinate must not be greater than bottom-right border coordinates")
-
+    # Calculatins sum
     c = sum(image[y][x] for y in range(y2 + 1) for x in range(x2 + 1))
     a = sum(image[y][x] for y in range(y1) for x in range(x1))
     b = sum(image[y][x] for y in range(y1) for x in range(x2 + 1))
