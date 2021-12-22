@@ -154,4 +154,5 @@ def test_rect_sum_coordinate_outside_boundaries(x1, y1, x2, y2, env):
 def test_rect_sum_coordinate_top_left_greater_than_bottom_right(x1, x2, y1, y2, env):
     with pytest.raises(ValueError):
         rect_sum(env["good"], x1, y1, x2, y2)
+
 ##############################################################################
