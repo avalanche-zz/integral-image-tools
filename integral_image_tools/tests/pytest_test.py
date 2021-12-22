@@ -136,7 +136,9 @@ def test_rect_sum_coordinate_not_positive_integer(x1, y1, x2, y2, env):
     "x1, y1, x2, y2",
     [
         (4, 0, 0, 0),
-        (0, 4, 0, 0)
+        (0, 0, 4, 0),
+        (0, 4, 0, 0),
+        (0, 0, 0, 4)
     ]
 )
 def test_rect_sum_coordinate_outside_boundaries(x1, y1, x2, y2, env):

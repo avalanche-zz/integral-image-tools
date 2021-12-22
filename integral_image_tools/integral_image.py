@@ -72,10 +72,10 @@ def rect_sum(rect: list[list[int]], x1: int, y1: int, x2: int, y2: int) -> int:
         if not isinstance(coordinate, int) or coordinate < 0:
             raise ValueError(
                 "border coordinate(s) must be positive integer(s)")
-    if x1 > len(rect[0]) or x2 > len(rect[0]):
+    if x1 > len(rect[0]) - 1 or x2 > len(rect[0]) - 1:
         raise ValueError(
             "x1 and/or x2 must not be greater than the number of the matrix columns")
-    if y1 > len(rect) or y2 > len(rect):
+    if y1 > len(rect) - 1 or y2 > len(rect) - 1:
         raise ValueError(
             "y1 and/or y2 must not be greater than the number of the matrix rows")
     if x1 > x2 or y1 > y2:
