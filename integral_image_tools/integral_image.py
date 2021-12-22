@@ -1,11 +1,12 @@
 """
-Functions for maintaining integral image
+Functions for calculating integral image and
+sum of pixels of a rectangle with given border points
 """
 
 
 def integral_view(image: list[list[int]]) -> list[list[int]]:
     """
-    Calculate matrix of integral image for "image"
+    Calculates matrix of integral image for "image"
     """
     # Checking "image"
     if not isinstance(image, list):
@@ -16,13 +17,15 @@ def integral_view(image: list[list[int]]) -> list[list[int]]:
                 raise ValueError("items of \"image\" must be lists")
             for num in item:
                 if not isinstance(num, int) or num < 0 or num > 255:
-                    raise ValueError("items of items of \"image\" must be integers between 0 and 255")
+                    raise ValueError(
+                        "items of items of \"image\" must be integers between 0 and 255")
             if index == len(image) - 1:
                 pass
             else:
                 if len(image[index]) != len(image[index + 1]):
-                    raise ValueError("items of \"image\" must be of the same length")
-            
+                    raise ValueError(
+                        "items of \"image\" must be of the same length")
+
     # Calculating matrix
     height, width = len(image), len(image[0])
     integral_image = [[0] * width for _ in range(height)]
@@ -36,45 +39,53 @@ def integral_view(image: list[list[int]]) -> list[list[int]]:
     return integral_image
 
 
-def rect_sum(image: list[list[int]], x1: int, y1: int, x2: int, y2: int) -> int:
+def rect_sum(rect: list[list[int]], x1: int, y1: int, x2: int, y2: int) -> int:
     """
-    Calculate sum of pixels of a random rectangle with given border points
+    Calculates sum of pixels of a rectangle within given borders
     """
     # Checking "image"
-    if not isinstance(image, list):
+    if not isinstance(rect, list):
         raise ValueError("\"image\"'s must be a list")
     else:
-        for index, item in enumerate(image):
+        for index, item in enumerate(rect):
             if not isinstance(item, list):
                 raise ValueError("items of \"image\" must be lists")
             for num in item:
-                if not isinstance(num, int) or num < 0 or num > 255:
-                    raise ValueError("items of items of \"image\" must be integers between 0 and 255")
-            if index == len(image) - 1:
+                if not isinstance(num, int):
+                    raise ValueError(
+                        "items of items of \"image\" must be integers")
+            if index == len(rect) - 1:
                 pass
             else:
-                if len(image[index]) != len(image[index + 1]):
-                    raise ValueError("items of \"image\" must be of the same length")
+                if len(rect[index]) != len(rect[index + 1]):
+                    raise ValueError(
+                        "items of \"image\" must be of the same length")
 
     # Checking coordinates
     top_left_border = (x1, y1)
     bottom_right_border = (x2, y2)
     for coordinate in top_left_border:
         if not isinstance(coordinate, int) or coordinate < 0:
-            raise ValueError("border coordinate(s) must be positive integer(s)")
+            raise ValueError(
+                "border coordinate(s) must be positive integer(s)")
     for coordinate in bottom_right_border:
         if not isinstance(coordinate, int) or coordinate < 0:
-            raise ValueError("border coordinate(s) must be positive integer(s)")
-    if x1 > len(image[0]) or x2 > len(image[0]):
-        raise ValueError("x1 or x2 must not be greater than the number of the matrix columns")
-    if y1 > len(image) or y2 > len(image):
-        raise ValueError("y1 or y2 must not be greater than the number of the matrix rows")
+            raise ValueError(
+                "border coordinate(s) must be positive integer(s)")
+    if x1 > len(rect[0]) or x2 > len(rect[0]):
+        raise ValueError(
+            "x1 and/or x2 must not be greater than the number of the matrix columns")
+    if y1 > len(rect) or y2 > len(rect):
+        raise ValueError(
+            "y1 and/or y2 must not be greater than the number of the matrix rows")
     if x1 > x2 or y1 > y2:
-        raise ValueError("top-left border coordinate must not be greater than bottom-right border coordinates")
+        raise ValueError(
+            "top-left border coordinates must not be greater than bottom-right border coordinates")
+
     # Calculatins sum
-    c = sum(image[y][x] for y in range(y2 + 1) for x in range(x2 + 1))
-    a = sum(image[y][x] for y in range(y1) for x in range(x1))
-    b = sum(image[y][x] for y in range(y1) for x in range(x2 + 1))
-    d = sum(image[y][x] for y in range(y2 + 1) for x in range(x1))
+    c = sum(rect[y][x] for y in range(y2 + 1) for x in range(x2 + 1))
+    a = sum(rect[y][x] for y in range(y1) for x in range(x1))
+    b = sum(rect[y][x] for y in range(y1) for x in range(x2 + 1))
+    d = sum(rect[y][x] for y in range(y2 + 1) for x in range(x1))
     s = a + c - b - d
     return s
