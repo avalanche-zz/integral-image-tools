@@ -142,7 +142,7 @@ cython_debug/
 .pylintrc
 
 ### VisualStudioCode ###
-.vscode/*
+.vscode/
 *.code-workspace
 
 # Local History for Visual Studio Code
