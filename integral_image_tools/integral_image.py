@@ -7,10 +7,11 @@ sum of pixels of a rectangle with given border points
 def integral_view(image: list[list[int]]) -> list[list[int]]:
     """Calculates matrix of integral image for "image"
 
-    :param image: matrix of integers from 0 to 255
-    :type image: list[list[int]]
-    :return: matrix of integral image
-    :rtype: list[list[int]]
+    Args:
+        image (list[list[int]]): matrix of integers from 0 to 255
+
+    Returns:
+        list[list[int]]: matrix of integral image
     """
     # Checking "image"
     if not isinstance(image, list):
@@ -45,20 +46,17 @@ def integral_view(image: list[list[int]]) -> list[list[int]]:
 
 def rect_sum(rect: list[list[int]], x1: int, y1: int, x2: int, y2: int) -> int:
     """Calculates sum of pixels of a rectangle within given borders
+    Args:
+        rect (list[list[int]]): matrix of integers
+        x1 (int): top left border X coordinate
+        y1 (int): top left border Y coordinate
+        x2 (int): bottom right X coordinate
+        y2 (int): bottom right Y coordinate
 
-    :param rect: matrix of integers
-    :type rect: list[list[int]]
-    :param x1: top left border X coordinate
-    :type x1: int
-    :param y1: top left border Y coordinate
-    :type y1: int
-    :param x2: bottom right X coordinate
-    :type x2: int
-    :param y2: bottom right Y coordinate
-    :type y2: int
-    :return: sum of integers
-    :rtype: int
+    Returns:
+        int: sum of pixels
     """
+
     # Checking "image"
     if not isinstance(rect, list):
         raise ValueError("\"image\"'s must be a list")

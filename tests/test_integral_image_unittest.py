@@ -1,5 +1,5 @@
 import unittest
-from ..integral_image import integral_view, rect_sum
+from integral_image_tools.integral_image import integral_view, rect_sum
 
 
 class TestIntegralViewMatrix(unittest.TestCase):

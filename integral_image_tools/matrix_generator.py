@@ -8,9 +8,8 @@ from random import randint
 
 def generate() -> list[list[int]]:
     """Generates matrix of numbers (0-255) with 2..15 rows and 2..15 columns
-
-    :return: Matrix
-    :rtype: list[list[int]]
+    Returns:
+        list[list[int]]: matrix
     """
 
     height, width = randint(2, 15), randint(2, 15)
