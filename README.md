@@ -44,10 +44,10 @@ ii.rect_sum(rect: list[list[int]], x1: int, y1: int, x2: int, y2: int)
 #### Description
 
 ##### ii.integral_view
-Calculates matrix of integral image for "image"
+Calculates matrix of integral image for "image" and returns it
 
 ##### ii.rect_sum
-Calculates sum of pixels of a rectangle within given borders
+Calculates sum of pixels of a rectangle within given borders and returns it
 
 ### Arguments
 
