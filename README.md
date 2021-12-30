@@ -39,41 +39,8 @@ from integral_image_tools import integral_image as ii
 ii.integral_view(image: list[list[int]])
 ``` 
 ```python
-ii.rect_sum(rect: list[list[int]], x1: int, y1: int, x2: int, y2: int)
+ii.rect_sum(image: list[list[int]], x1: int, y1: int, x2: int, y2: int)
 ```
-#### Description
-
-##### ii.integral_view
-Calculates matrix of integral image for "image" and returns it
-
-##### ii.rect_sum
-Calculates sum of pixels of a rectangle within given borders and returns it
-
-### Arguments
-
-#### Description
-
-##### image, rect
-Matrices
-
-##### x1, y1
-Top left border coordinates
-
-##### x2, y2
-Bottom right border coordinates 
-
-#### Requirements for arguments
-
-##### image
-- must be a matrix (list of lists of integers)
-- its items must be integers in range 0..255   
-
-##### rect
-- must be a matrix (list of list of integers)
-
-##### x1, y1, x2, y2
-- must be positive integers
-- cannot be out of boundaries of "rect"
 
 ### Examples
 
